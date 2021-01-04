@@ -13,10 +13,10 @@ app.use(express.urlencoded({extended:false}));
 
 
 if(process.env.NODE_ENV === "production"){
-    app.use(express.static("gym/build"));
+    app.use(express.static(path.join(__dirname,"../gym/build")));
 
     app.get('*',(req,res) =>{
-        res.sendFile(path.resolve(__dirname,'gym','build','index.html'));
+        res.sendFile(path.resolve(__dirname,"../gym/build/index.html"))
     })
 }else{
     app.get('/',(req,res) =>{
@@ -47,4 +47,4 @@ app.listen(PORT , ()=>{
     console.log(`server run in ${process.env.NODE_ENV} mode on port ${PORT}`)
 })
 
-console.log(staticpath)
+

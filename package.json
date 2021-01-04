@@ -12,7 +12,7 @@
     "server": "nodemon backend/server",
     "client": "npm start --prefix gym",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix gym && npm run build --prefix gym"
+    "heroku-postbuild":" NPM_CONFIG_PRODUCTION=false npm install --prefix gym && npm run build --prefix gym "
   },
   "author": "",
   "license": "ISC",
