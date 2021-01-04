@@ -1,1 +1,10 @@
 node_modules
+
+#production
+/gym/build
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.production.local
