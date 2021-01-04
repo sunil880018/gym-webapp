@@ -11,8 +11,9 @@ const PORT = process.env.PORT||5000
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname , '/gym/build')));
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static("gym/build"));
 
     app.get('*',(req,res) =>{
         res.sendFile(path.resolve(__dirname,'gym','build','index.html'));
@@ -45,3 +46,5 @@ app.post("/register",async(req,res) =>{
 app.listen(PORT , ()=>{
     console.log(`server run in ${process.env.NODE_ENV} mode on port ${PORT}`)
 })
+
+console.log(staticpath)
