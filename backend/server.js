@@ -8,8 +8,20 @@ connectDB()
 dotenv.config()
 const PORT = process.env.PORT||5000
 
+
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+
+if(process.env.NODE_ENV === 'production'){
+   app.use(express.static(path.join(__dirname,'../gym/build')))
+   app.get('*',(req,res) =>{
+    path.resolve(__dirname,'../gym','./build','./index.html')
+   })
+} else{
+    app.get('/',(req,res) =>{
+        res.send("runnig")
+    })
+}
 
 app.post("/register",async(req,res) =>{
     try{
@@ -23,11 +35,12 @@ app.post("/register",async(req,res) =>{
         console.log("register success")
         const regMember = await reg.save();
         res.status(200).send("registration successful")
-        res.redirect("/");
     }catch(err){
         res.status(400).send(err)
     }
 })
+
+
 
 app.listen(PORT , ()=>{
     console.log(`server run in ${process.env.NODE_ENV} mode on port ${PORT}`)
