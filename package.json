@@ -8,8 +8,7 @@
     "start":"node backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix gym",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild":"cd client && npm install && npm run build"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
