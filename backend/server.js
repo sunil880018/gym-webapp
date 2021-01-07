@@ -11,20 +11,6 @@ const PORT = process.env.PORT||5000
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname,"../gym/build")));
-
-    app.get('*',(req,res) =>{
-        res.sendFile(path.join(__dirname,'gym','build','index.html'));
-    })
-}else{
-    app.get('/',(req,res) =>{
-        res.send('running')
-    })
-}
-
-
 app.post("/register",async(req,res) =>{
     try{
         const reg = new User({
